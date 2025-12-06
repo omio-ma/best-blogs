@@ -3,7 +3,18 @@
     "allow": [
       "Bash(powershell.exe -ExecutionPolicy Bypass -File \".specify/scripts/powershell/setup-plan.ps1\" -Json)",
       "Bash(powershell.exe:*)",
-      "SlashCommand(/speckit.tasks)"
+      "SlashCommand(/speckit.tasks)",
+      "Bash(dotnet new:*)",
+      "Bash(dotnet sln:*)",
+      "Bash(dotnet sln add:*)",
+      "Bash(dotnet add reference:*)",
+      "Bash(dotnet add:*)",
+      "Bash(dotnet add package:*)",
+      "Bash(dotnet remove:*)",
+      "Bash(npm create:*)",
+      "Bash(npm install)",
+      "Bash(npm install:*)",
+      "Bash(dotnet build:*)"
     ],
     "deny": [],
     "ask": []
