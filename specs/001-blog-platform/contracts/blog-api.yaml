@@ -1,0 +1,219 @@
+openapi: 3.0.3
+info:
+  title: Blog API
+  description: Public API for browsing blog posts and categories
+  version: 1.0.0
+
+servers:
+  - url: http://localhost:3000/api/blog
+    description: Local development server
+
+paths:
+  /posts:
+    get:
+      summary: List blog posts with pagination
+      operationId: listPosts
+      parameters:
+        - name: limit
+          in: query
+          description: Number of posts to return
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 50
+            default: 10
+        - name: offset
+          in: query
+          description: Number of posts to skip
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+        - name: categoryId
+          in: query
+          description: Filter by category ID
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  posts:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/BlogPostSummary'
+                  total:
+                    type: integer
+                    description: Total number of posts
+                  hasMore:
+                    type: boolean
+                    description: Whether there are more posts to load
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /posts/{id}:
+    get:
+      summary: Get single blog post with full content
+      operationId: getPost
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BlogPostFull'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+  /categories:
+    get:
+      summary: List all categories
+      operationId: listCategories
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  categories:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Category'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+
+components:
+  schemas:
+    BlogPostSummary:
+      type: object
+      required:
+        - id
+        - title
+        - excerpt
+        - authorName
+        - category
+        - publishedAt
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+          minLength: 5
+          maxLength: 200
+        excerpt:
+          type: string
+          minLength: 50
+          maxLength: 300
+        authorName:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+        publishedAt:
+          type: string
+          format: date-time
+
+    BlogPostFull:
+      type: object
+      required:
+        - id
+        - title
+        - content
+        - excerpt
+        - authorName
+        - category
+        - publishedAt
+        - createdAt
+        - updatedAt
+      properties:
+        id:
+          type: string
+          format: uuid
+        title:
+          type: string
+        content:
+          type: string
+          description: Full blog post content (Markdown or HTML)
+        excerpt:
+          type: string
+        authorName:
+          type: string
+        category:
+          $ref: '#/components/schemas/Category'
+        publishedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+
+    Category:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+          nullable: true
+
+  responses:
+    BadRequest:
+      description: Bad request - invalid parameters
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+              details:
+                type: array
+                items:
+                  type: object
+
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string

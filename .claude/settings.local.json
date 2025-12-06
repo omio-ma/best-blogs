@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell.exe -ExecutionPolicy Bypass -File \".specify/scripts/powershell/setup-plan.ps1\" -Json)",
+      "Bash(powershell.exe:*)",
+      "SlashCommand(/speckit.tasks)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
