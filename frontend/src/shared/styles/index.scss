@@ -1,0 +1,85 @@
+// Import reset first
+@use 'reset';
+
+// Import variables and mixins
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// Global styles
+body {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  color: $color-gray-900;
+  background-color: $color-gray-100;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-heading;
+  margin-bottom: $spacing-md;
+}
+
+h1 {
+  @include heading-1;
+}
+
+h2 {
+  @include heading-2;
+}
+
+h3 {
+  @include heading-3;
+}
+
+p {
+  margin-bottom: $spacing-md;
+}
+
+a {
+  color: $color-secondary;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: darken($color-secondary, 15%);
+  }
+}
+
+// Utility classes
+.container {
+  @include container;
+}
+
+.card {
+  @include card;
+}
+
+.btn-primary {
+  @include button-primary;
+}
+
+.btn-secondary {
+  @include button-secondary;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-truncate {
+  @include truncate;
+}
+
+.mt-sm { margin-top: $spacing-sm; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mt-xl { margin-top: $spacing-xl; }
+
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+.mb-xl { margin-bottom: $spacing-xl; }
+
+.p-sm { padding: $spacing-sm; }
+.p-md { padding: $spacing-md; }
+.p-lg { padding: $spacing-lg; }
+.p-xl { padding: $spacing-xl; }

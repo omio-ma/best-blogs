@@ -108,70 +108,70 @@ All tasks follow the three core principles:
 
 ### 2.1 .NET Aspire AppHost Configuration
 
-- [ ] [T055] [P7] Create `Program.cs` in BestBlogs.AppHost with DistributedApplication builder
-- [ ] [T056] [P7] Add PostgreSQL resource with data volume in AppHost
-- [ ] [T057] [P7] Add PostgreSQL database "bestblogsdb" to Aspire configuration
-- [ ] [T058] [P7] Add BestBlogs.API project reference to AppHost
-- [ ] [T059] [P7] Wire up API project to PostgreSQL database connection
-- [ ] [T060] [P7] Add frontend NPM app to AppHost (optional - for Aspire-managed frontend)
-- [ ] [T061] [P7] Configure service discovery between API and frontend
+- [X] [T0] [P7] Create `Program.cs` in BestBlogs.AppHost with DistributedApplication builder
+- [X] [T0] [P7] Add PostgreSQL resource with data volume in AppHost
+- [X] [T0] [P7] Add PostgreSQL database "bestblogsdb" to Aspire configuration
+- [X] [T0] [P7] Add BestBlogs.API project reference to AppHost
+- [X] [T0] [P7] Wire up API project to PostgreSQL database connection
+- [X] [T0] [P7] Add frontend NPM app to AppHost (optional - for Aspire-managed frontend)
+- [X] [T0] [P7] Configure service discovery between API and frontend
 
 ### 2.2 Service Defaults Configuration
 
-- [ ] [T062] [P8] Create `Extensions.cs` in BestBlogs.ServiceDefaults
-- [ ] [T063] [P8] Implement `AddServiceDefaults()` extension method
-- [ ] [T064] [P8] Configure OpenTelemetry with metrics (AspNetCore, HttpClient, Runtime)
-- [ ] [T065] [P8] Configure OpenTelemetry with tracing (AspNetCore, HttpClient)
-- [ ] [T066] [P8] Add default health checks configuration
-- [ ] [T067] [P8] Add service discovery configuration
-- [ ] [T068] [P9] Call `AddServiceDefaults()` in API Program.cs
-- [ ] [T069] [P9] Verify Aspire dashboard runs on `dotnet run --project BestBlogs.AppHost`
+- [X] [T0] [P8] Create `Extensions.cs` in BestBlogs.ServiceDefaults
+- [X] [T0] [P8] Implement `AddServiceDefaults()` extension method
+- [X] [T0] [P8] Configure OpenTelemetry with metrics (AspNetCore, HttpClient, Runtime)
+- [X] [T0] [P8] Configure OpenTelemetry with tracing (AspNetCore, HttpClient)
+- [X] [T0] [P8] Add default health checks configuration
+- [X] [T0] [P8] Add service discovery configuration
+- [X] [T0] [P9] Call `AddServiceDefaults()` in API Program.cs
+- [X] [T0] [P9] Verify Aspire dashboard runs on `dotnet run --project BestBlogs.AppHost`
 
 ### 2.3 Database Setup & EF Core Configuration
 
-- [ ] [T070] [P10] Create `BestBlogsDbContext.cs` in `backend/src/BestBlogs.Infrastructure/Persistence/`
-- [ ] [T071] [P10] Configure DbContext to use Aspire PostgreSQL connection
-- [ ] [T072] [P10] Create `DbContextFactory` for design-time migrations
-- [ ] [T073] [P11] Add `AddNpgsqlDbContext` with Aspire integration in Program.cs
-- [ ] [T074] [P11] Configure connection string from Aspire service discovery
+- [X] [T0] [P10] Create `BestBlogsDbContext.cs` in `backend/src/BestBlogs.Infrastructure/Persistence/`
+- [X] [T0] [P10] Configure DbContext to use Aspire PostgreSQL connection
+- [X] [T0] [P10] Create `DbContextFactory` for design-time migrations
+- [X] [T0] [P11] Add `AddNpgsqlDbContext` with Aspire integration in Program.cs
+- [X] [T0] [P11] Configure connection string from Aspire service discovery
 
 ### 2.4 Manual CQRS Foundation (No MediatR)
 
-- [ ] [T075] [P12] Create `ICommand<TResult>` interface in `backend/src/BestBlogs.Application/Common/`
-- [ ] [T076] [P12] Create `ICommandHandler<TCommand, TResult>` interface
-- [ ] [T077] [P12] Create `IQuery<TResult>` interface in `backend/src/BestBlogs.Application/Common/`
-- [ ] [T078] [P12] Create `IQueryHandler<TQuery, TResult>` interface
-- [ ] [T079] [P13] Create example command handler registration pattern for DI
-- [ ] [T080] [P13] Document manual CQRS pattern in code comments
+- [X] [T0] [P12] Create `ICommand<TResult>` interface in `backend/src/BestBlogs.Application/Common/`
+- [X] [T0] [P12] Create `ICommandHandler<TCommand, TResult>` interface
+- [X] [T0] [P12] Create `IQuery<TResult>` interface in `backend/src/BestBlogs.Application/Common/`
+- [X] [T0] [P12] Create `IQueryHandler<TQuery, TResult>` interface
+- [X] [T0] [P13] Create example command handler registration pattern for DI
+- [X] [T0] [P13] Document manual CQRS pattern in code comments
 
 ### 2.5 Shared Domain Foundation
 
-- [ ] [T081] [P14] Create `IEntity` interface in `backend/src/BestBlogs.Domain/Interfaces/IEntity.cs`
-- [ ] [T082] [P14] Create `BaseEntity` abstract class with Id, CreatedAt, UpdatedAt
-- [ ] [T083] [P14] Create `IRepository<T>` generic interface in `backend/src/BestBlogs.Domain/Interfaces/`
+- [X] [T0] [P14] Create `IEntity` interface in `backend/src/BestBlogs.Domain/Interfaces/IEntity.cs`
+- [X] [T0] [P14] Create `BaseEntity` abstract class with Id, CreatedAt, UpdatedAt
+- [X] [T0] [P14] Create `IRepository<T>` generic interface in `backend/src/BestBlogs.Domain/Interfaces/`
 
 ### 2.6 API Middleware & Configuration
 
-- [ ] [T084] [P15] Create `ExceptionHandlingMiddleware.cs` in `backend/src/BestBlogs.API/Middleware/`
-- [ ] [T085] [P15] Create `RateLimitingMiddleware.cs` for comment spam protection
-- [ ] [T086] [P15] Configure CORS policy for frontend origin in `Program.cs`
-- [ ] [T087] [P15] Configure Swagger/OpenAPI in `Program.cs`
-- [ ] [T088] [P16] Create `ApiResponse<T>` wrapper class for consistent responses
-- [ ] [T089] [P16] Create `ErrorResponse` class for validation errors
+- [X] [T0] [P15] Create `ExceptionHandlingMiddleware.cs` in `backend/src/BestBlogs.API/Middleware/`
+- [X] [T0] [P15] Create `RateLimitingMiddleware.cs` for comment spam protection
+- [X] [T0] [P15] Configure CORS policy for frontend origin in `Program.cs`
+- [X] [T0] [P15] Configure Swagger/OpenAPI in `Program.cs`
+- [X] [T0] [P16] Create `ApiResponse<T>` wrapper class for consistent responses
+- [X] [T0] [P16] Create `ErrorResponse` class for validation errors
 
 ### 2.7 Frontend API Client Setup
 
-- [ ] [T090] [P17] Create Axios instance with base URL in `frontend/src/shared/api/client.ts`
-- [ ] [T091] [P17] Configure request/response interceptors for error handling
-- [ ] [T092] [P17] Create React Query client configuration in `frontend/src/shared/api/queryClient.ts`
-- [ ] [T093] [P17] Wrap App component with `QueryClientProvider`
+- [X] [T0] [P17] Create Axios instance with base URL in `frontend/src/shared/api/client.ts`
+- [X] [T0] [P17] Configure request/response interceptors for error handling
+- [X] [T0] [P17] Create React Query client configuration in `frontend/src/shared/api/queryClient.ts`
+- [X] [T0] [P17] Wrap App component with `QueryClientProvider`
 
 ### 2.8 SCSS Design System
 
-- [ ] [T094] [P18] Create `_variables.scss` with color palette in `frontend/src/shared/styles/`
-- [ ] [T095] [P18] Create `_mixins.scss` with responsive breakpoints
-- [ ] [T096] [P18] Create `global.scss` with CSS reset and base styles
-- [ ] [T097] [P18] Import global styles in `frontend/src/main.tsx`
+- [X] [T0] [P18] Create `_variables.scss` with color palette in `frontend/src/shared/styles/`
+- [X] [T0] [P18] Create `_mixins.scss` with responsive breakpoints
+- [X] [T0] [P18] Create `global.scss` with CSS reset and base styles
+- [X] [T0] [P18] Import global styles in `frontend/src/main.tsx`
 
 ---
 
