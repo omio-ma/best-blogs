@@ -1,3 +1,4 @@
+using BestBlogs.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace BestBlogs.Infrastructure.Persistence;
@@ -9,10 +10,10 @@ public class BestBlogsDbContext : DbContext
     {
     }
 
-    // DbSets will be added in Phase 3 when domain entities are created
-    // public DbSet<BlogPost> BlogPosts => Set<BlogPost>();
-    // public DbSet<Comment> Comments => Set<Comment>();
-    // public DbSet<Category> Categories => Set<Category>();
+    public DbSet<BlogPost> BlogPosts => Set<BlogPost>();
+    public DbSet<Comment> Comments => Set<Comment>();
+    public DbSet<Category> Categories => Set<Category>();
+    // AdminUser will be added in Phase 5
     // public DbSet<AdminUser> AdminUsers => Set<AdminUser>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
